@@ -27,7 +27,7 @@ def main():
         elif menu == '2':
             userService = UserService()
             id = input('아이디:')
-            password = input('비번')          
+            password = input('비번:')          
             userService.login(id, password)
               
 if __name__ == '__main__':

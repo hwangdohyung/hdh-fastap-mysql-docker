@@ -5,5 +5,6 @@ class UserService(object):
     
     def login(self, id, password):
         loginip = User(id,password)
-        print(f'아이디: {loginip.id}')
-        print(f'비번: {loginip.password}')
+        print(f'ID: {loginip.id}',f'PASSWORD: {loginip.password}')
+        # print(f'PASSWORD: {loginip.password}')
+        
