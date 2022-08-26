@@ -3,13 +3,17 @@ import sys
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 basedir = os.path.dirname(os.path.abspath(__file__))
 
-
+from app.services.grade import GradeService
 from app.services.calculator import CalculatorService
 from app.services.user import UserService
+
+
 def print_menu():
     print("0. 전체프로그램 종료")
     print("1. 계산기 프로그램")
     print("2. 로그인 프로그램")  # 입력받은 아이디와 비번 콘솔에 출력하기
+    print("3. 성적표 프로그램")  # 입력받은 아이디와 비번 콘솔에 출력하기
+    print("4. 판다스 퀴즈 프로그램")  # 입력받은 아이디와 비번 콘솔에 출력하기
     menu = input('메뉴 선택')
     return menu
 
@@ -29,7 +33,17 @@ def main():
             id = input('아이디:')
             password = input('비번:')          
             userService.login(id, password)
-              
+        elif menu == '3':
+            gradeService = GradeService()
+            name = input('이름: ')
+            kor = int(input('국어: '))          
+            eng = int(input('영어: '))       
+            math = int(input('수학: '))       
+            grade = gradeService.get_grade(name, kor, eng, math)   
+            print(grade)
+        elif menu == '4':           
+            pass 
+                
 if __name__ == '__main__':
     main()
 
