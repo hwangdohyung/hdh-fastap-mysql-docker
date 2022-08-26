@@ -6,6 +6,7 @@ basedir = os.path.dirname(os.path.abspath(__file__))
 from app.services.grade import GradeService
 from app.services.calculator import CalculatorService
 from app.services.user import UserService
+from app.services.pandas_quiz import PandasQuiz
 
 
 def print_menu():
@@ -42,7 +43,16 @@ def main():
             grade = gradeService.get_grade(name, kor, eng, math)   
             print(grade)
         elif menu == '4':           
-            pass 
+            quiz = PandasQuiz()
+            while 1:
+                quiz_number = input('퀴즈번호 선택. 종료는 0 : ')
+                if quiz_number == '0':
+                    break
+                elif quiz_number == '1':
+                    quiz.quiz_01()
+              
+              
+              
                 
 if __name__ == '__main__':
     main()
