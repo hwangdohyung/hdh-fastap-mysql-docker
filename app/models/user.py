@@ -7,3 +7,5 @@ class User(object):
         return print(self.id)
     def loginpassword(self):
         return print(self.password)
+    
+    

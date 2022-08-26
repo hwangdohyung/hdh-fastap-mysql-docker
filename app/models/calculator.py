@@ -12,7 +12,7 @@ class Calculator(object):
     def div(self):
         return self.first / self.second
 
-
+    
 
 
 
