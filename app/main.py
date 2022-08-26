@@ -40,10 +40,11 @@ def main():
             math = int(input('수학: '))       
             grade = gradeService.get_grade(name, kor, eng, math)   
             print(grade)
-            
+                        
 
 if __name__ == '__main__':
     main()
+
 
 
 
