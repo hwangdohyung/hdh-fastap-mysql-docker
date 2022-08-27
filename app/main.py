@@ -50,10 +50,12 @@ def main():
                     break
                 elif quiz_number == '1':
                     quiz.quiz_01()
-              
-              
-              
-                
+                elif quiz_number == '2':
+                    quiz.quiz_02()
+                elif quiz_number == '3':
+                    quiz.quiz_03()
+                    
+                    
 if __name__ == '__main__':
     main()
 
