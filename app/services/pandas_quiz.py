@@ -1,4 +1,5 @@
 import random
+from tkinter.tix import COLUMN
 from icecream import ic
 import pandas as pd 
 import string
@@ -56,18 +57,22 @@ class PandasQuiz(object):
         AOQFG    32
         jHChe    59
         Name: 국어, dtype: int64
-    
+        
     '''
     def quiz_05(self, subject) :
-        scores = self.quiz_04()
+        self.subject = subject
+        scores = self.quiz_04().loc[:,[subject]]
+   
         ic(scores)
+
+    
     ''' 
     Q6 원하는 학생점수만 출력하시오. (아이디가 랜덤이므로 맨 위에 학생점수 출력으로 대체함)
         lDZid  57  90  55  24
     '''
     def quiz_6(self, id) :
         print(f'{id}의 성적출력') # 당연히 id 가 일치할리 없음. 형식적으로 출력함
-        scores = self.quiz_4()
+        scores = self.quiz_04()
         
     '''
     Q7 각 학생들의 점수의 총합과 마지막 행은 과목총점 추가해서 출력
