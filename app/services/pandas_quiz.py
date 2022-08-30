@@ -65,15 +65,17 @@ class PandasQuiz(object):
     #     jHChe    59
     #     Name: 국어, dtype: int64
     
-    def quiz_05(self,subject):
-        self.subject = subject
-        df5 = self.quiz_04()[f'{self.subject}']
+    def quiz_05(self, subject):
+        scores = self.quiz_04()
+        df5 = scores.loc[:,subject]
         ic(df5)
-
+        
     def quiz_06(self):
-        df6 = self.quiz_04()
-        ic(df6.iloc[[0]])
-#   
+        print(f'{id}의 성적출력')
+        scores = self.quiz_04()
+        df6 = scores.iloc[[0],:]
+        ic(df6)
+           
 #     Q7 각 학생들의 점수의 총합과 마지막 행은 과목총점 추가해서 출력
 #         ic| df5:  국어   영어   수학   사회   과학    총점
 #                  hVoGW   93   44   14   94   86   331
