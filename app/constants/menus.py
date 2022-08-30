@@ -12,4 +12,4 @@ QUIZ_5: Final = '/pandas-quiz/5'
 QUIZ_6: Final = '/pandas-quiz/6'
 QUIZ_7: Final = '/pandas-quiz/7'
 DDARUNG: Final = '/ddarung'
-
+TITANIC: Final = '/titanic'

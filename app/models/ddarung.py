@@ -123,7 +123,7 @@ class DDarung:
         #3. 훈련
         model.fit(x_train,y_train)
         #4. 평가, 예측
-        print('model.score :',model.score(x_test,y_test))
+        print('model.score :',round(model.score(x_test,y_test),4))
         return this
 
     
