@@ -44,61 +44,57 @@ class PandasQuiz(object):
         ic(df)
         return df
     
-    ''' 
-    Q5 원하는 과목 점수만 출력하시오. (만약 국어라고 입력하면 아래와 같이 출력됨)
-        hVoGW    93
-        QkpKK    25
-        oDmky    82
-        qdTeX    51
-        XGzWk    34
-        PAwgj    85
-        vnTmB    28
-        wuxIm    58
-        AOQFG    32
-        jHChe    59
-        Name: 국어, dtype: int64
-        
-    '''
-    def quiz_05(self, subject) :
-        self.subject = subject
-        scores = self.quiz_04().loc[:,[subject]]
-   
-        ic(scores)
-
-    
-    ''' 
-    Q6 원하는 학생점수만 출력하시오. (아이디가 랜덤이므로 맨 위에 학생점수 출력으로 대체함)
-        lDZid  57  90  55  24
-    '''
-    def quiz_6(self, id) :
-        print(f'{id}의 성적출력') # 당연히 id 가 일치할리 없음. 형식적으로 출력함
-        scores = self.quiz_04()
-        
-    '''
-    Q7 각 학생들의 점수의 총합과 마지막 행은 과목총점 추가해서 출력
-        ic| df5:  국어   영어   수학   사회   과학    총점
-                 hVoGW   93   44   14   94   86   331
-                 QkpKK   25   54   29   10    8   126
-                 oDmky   82   65   31   31    2   211
-                 qdTeX   51   56   56    3   13   179
-                 XGzWk   34   32   67   48   23   204
-                 PAwgj   85   24   16    8   22   155
-                 vnTmB   28   80   52   43   48   251
-                 wuxIm   58   94   93   54   83   382
-                 AOQFG   32   50   95    1   52   230
-                 jHChe   59   37   80   27   39   242
-                 과목총점   547  536  533  319  376  2311
-    '''
-    def quiz_7(self) :
-        scores = self.quiz_4() 
-    
-    
-    # 리스트로 DataFrame 생성하는 방법 (디폴트)
+     # 리스트로 DataFrame 생성하는 방법 (디폴트)
     # df = pd.DataFrame([[],[],[],[]], index=[], columns=[])
     
     # 사전으로 DataFrame 생성하는 방법 (from_dict()사용) 
     # df = pd.DataFrame.from_dict({}, orient='index', columns=[])
+
+
+
+    # Q5 원하는 과목 점수만 출력하시오. (만약 국어라고 입력하면 아래와 같이 출력됨)
+    #     hVoGW    93
+    #     QkpKK    25
+    #     oDmky    82
+    #     qdTeX    51
+    #     XGzWk    34
+    #     PAwgj    85
+    #     vnTmB    28
+    #     wuxIm    58
+    #     AOQFG    32
+    #     jHChe    59
+    #     Name: 국어, dtype: int64
     
-    
-    
+    def quiz_05(self,subject):
+        self.subject = subject
+        df5 = self.quiz_04()[f'{self.subject}']
+        ic(df5)
+
+    def quiz_06(self):
+        df6 = self.quiz_04()
+        ic(df6.iloc[[0]])
+#   
+#     Q7 각 학생들의 점수의 총합과 마지막 행은 과목총점 추가해서 출력
+#         ic| df5:  국어   영어   수학   사회   과학    총점
+#                  hVoGW   93   44   14   94   86   331
+#                  QkpKK   25   54   29   10    8   126
+#                  oDmky   82   65   31   31    2   211
+#                  qdTeX   51   56   56    3   13   179
+#                  XGzWk   34   32   67   48   23   204
+#                  PAwgj   85   24   16    8   22   155
+#                  vnTmB   28   80   52   43   48   251
+#                  wuxIm   58   94   93   54   83   382
+#                  AOQFG   32   50   95    1   52   230
+#                  jHChe   59   37   80   27   39   242
+#                  과목총점   547  536  533  319  376  2311
+
+    def quiz_07(self):
+        self.science = np.random.randint(0,101,(10,1))
+        df7 = self.quiz_04()
+        df7['과학'] = self.science
+        df7['총점'] = df7['국어'] + df7['영어'] + df7['수학'] + df7['사회'] + df7['과학']
+        df7.loc['과목총점']= df7.sum(axis=0)
+        ic(df7)
+       
+       
     

@@ -36,3 +36,4 @@ services:
 networks:
   local-net:
     driver: bridge
+
