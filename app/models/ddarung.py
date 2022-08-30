@@ -4,8 +4,11 @@ import numpy as np
 from sklearn.preprocessing import StandardScaler
 from sklearn.ensemble import BaggingRegressor
 from sklearn.tree import DecisionTreeRegressor
+from app.utils.context import Context
 
 class DDarung:
+    
+    context = Context()
     
     def __init__(self) -> None:
         self.train_set = None
@@ -15,28 +18,17 @@ class DDarung:
         self.x_test = None
         self.y_test = None
         
-    
-    def hook(self, path, train, test):
-        self.from_csv(path, train, test)
-        self.preprocess()
-        self.learning()
-        self.test()
-    
-    def from_csv(self, path, train, test):
-        #1. 데이터
-        path = 'C:\_data\ddarung/' 
-        train_set = pd.read_csv(path + 'train.csv',
-                                )
-        test_set = pd.read_csv(path + 'test.csv', 
-                            )
    
+    def from_csv(self, path, fname):
+        this = self.context
+        this.path = path 
+        this.fname = fname
+        return pd.read_csv(this.path+this.fname)
     
-    def preprocess(self):
-        self.missing_value_process_median()
-        self.missing_value_process_interpolate()
-        self.missing_value_process_mean()
-        self.missing_value_process_drop()
-        
+        train_set = pd.read_csv(path + train)
+        test_set = pd.read_csv(path + test) 
+                            
+ 
     
     def missing_value_process_median(self):
         print(train_set.isnull().sum()) 
@@ -69,11 +61,11 @@ class DDarung:
 
     def outliers(data_out):
         quartile_1, q2 , quartile_3 = np.percentile(data_out,
-                                                [25,50,75]) # percentile 백분위
-        print("1사분위 : ",quartile_1) # 25% 위치인수를 기점으로 사이에 값을 구함
-        print("q2 : ",q2) # 50% median과 동일 
-        print("3사분위 : ",quartile_3) # 75% 위치인수를 기점으로 사이에 값을 구함
-        iqr =quartile_3-quartile_1  # 75% -25%
+                                                [25,50,75]) 
+        print("1사분위 : ",quartile_1) 
+        print("q2 : ",q2) 
+        print("3사분위 : ",quartile_3) 
+        iqr =quartile_3-quartile_1  
         print("iqr :" ,iqr)
         lower_bound = quartile_1 - (iqr * 1.5)
         upper_bound = quartile_3 + (iqr * 1.5)
@@ -143,3 +135,5 @@ class DDarung:
         y_test = self.y_test
         model = self.model
         print('model.score :',model.score(x_test,y_test))
+        
+
