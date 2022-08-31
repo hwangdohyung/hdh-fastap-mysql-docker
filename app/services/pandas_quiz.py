@@ -44,38 +44,43 @@ class PandasQuiz(object):
         ic(df)
         return df
     
-     # 리스트로 DataFrame 생성하는 방법 (디폴트)
-    # df = pd.DataFrame([[],[],[],[]], index=[], columns=[])
-    
-    # 사전으로 DataFrame 생성하는 방법 (from_dict()사용) 
-    # df = pd.DataFrame.from_dict({}, orient='index', columns=[])
+# 리스트로 DataFrame 생성하는 방법 (디폴트)
+# df = pd.DataFrame([[],[],[],[]], index=[], columns=[])
+
+# 사전으로 DataFrame 생성하는 방법 (from_dict()사용) 
+# df = pd.DataFrame.from_dict({}, orient='index', columns=[])
 
 
 
-    # Q5 원하는 과목 점수만 출력하시오. (만약 국어라고 입력하면 아래와 같이 출력됨)
-    #     hVoGW    93
-    #     QkpKK    25
-    #     oDmky    82
-    #     qdTeX    51
-    #     XGzWk    34
-    #     PAwgj    85
-    #     vnTmB    28
-    #     wuxIm    58
-    #     AOQFG    32
-    #     jHChe    59
-    #     Name: 국어, dtype: int64
+# Q5 원하는 과목 점수만 출력하시오. (만약 국어라고 입력하면 아래와 같이 출력됨)
+#     hVoGW    93
+#     QkpKK    25
+#     oDmky    82
+#     qdTeX    51
+#     XGzWk    34
+#     PAwgj    85
+#     vnTmB    28
+#     wuxIm    58
+#     AOQFG    32
+#     jHChe    59
+#     Name: 국어, dtype: int64
     
     def quiz_05(self, subject):
         scores = self.quiz_04()
         df5 = scores.loc[:,subject]
         ic(df5)
-        
+    
+
+# Q6 원하는 학생점수만 출력하시오. (아이디가 랜덤이므로 맨 위에 학생점수 출력으로 대체함)
+#     lDZid  57  90  55  24
+ 
     def quiz_06(self):
         print(f'{id}의 성적출력')
         scores = self.quiz_04()
         df6 = scores.iloc[[0],:]
         ic(df6)
-           
+        
+    
 #     Q7 각 학생들의 점수의 총합과 마지막 행은 과목총점 추가해서 출력
 #         ic| df5:  국어   영어   수학   사회   과학    총점
 #                  hVoGW   93   44   14   94   86   331
@@ -88,7 +93,7 @@ class PandasQuiz(object):
 #                  wuxIm   58   94   93   54   83   382
 #                  AOQFG   32   50   95    1   52   230
 #                  jHChe   59   37   80   27   39   242
-#                  과목총점   547  536  533  319  376  2311
+#                  과목총점   547  536  533  319  376  2311       
 
     def quiz_07(self):
         self.science = np.random.randint(0,101,(10,1))
